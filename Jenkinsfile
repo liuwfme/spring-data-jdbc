@@ -23,11 +23,16 @@ pipeline {
 				label 'data'
 			}
 			options { timeout(time: 30, unit: 'MINUTES') }
+
+			environment {
+				DOCKER_HUB = credentials('hub.docker.com-springbuildmaster')
+			}
+
 			steps {
 				script {
 					docker.withRegistry('', 'hub.docker.com-springbuildmaster') {
 						docker.image('adoptopenjdk/openjdk8:latest').inside('-u root -v /var/run/docker.sock:/var/run/docker.sock -v $HOME:/tmp/jenkins-home') {
-							sh './test.sh'
+							sh "USER=${DOCKER_HUB_USR} PASSWORD=${DOCKER_HUB_PSW} ./test.sh"
 						}
 					}
 				}
