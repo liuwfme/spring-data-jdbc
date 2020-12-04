@@ -115,7 +115,7 @@ pipeline {
 			}
 
 			steps {
-				sh 'MAVEN_OPTS="-Duser.name=jenkins -Duser.home=/tmp/jenkins-home" ./mvnw -Pci,artifactory -Dmaven.repo.local=/tmp/jenkins-home/.m2/spring-data-jdbc ' +
+				sh 'MAVEN_OPTS="-Duser.name=jenkins -Duser.home=/tmp/jenkins-home" ./mvnw -Pci,artifactory -Dmaven.repo.local=/tmp/jenkins-home/.m2/spring-data-jdbc-non-root ' +
 						'-Dartifactory.server=https://repo.spring.io ' +
 						"-Dartifactory.username=${ARTIFACTORY_USR} " +
 						"-Dartifactory.password=${ARTIFACTORY_PSW} " +
@@ -144,7 +144,7 @@ pipeline {
 			}
 
 			steps {
-				sh 'MAVEN_OPTS="-Duser.name=jenkins -Duser.home=/tmp/jenkins-home" ./mvnw -Pci,distribute -Dmaven.repo.local=/tmp/jenkins-home/.m2/spring-data-jdbc ' +
+				sh 'MAVEN_OPTS="-Duser.name=jenkins -Duser.home=/tmp/jenkins-home" ./mvnw -Pci,distribute -Dmaven.repo.local=/tmp/jenkins-home/.m2/spring-data-jdbc-non-root ' +
 						'-Dartifactory.server=https://repo.spring.io ' +
 						"-Dartifactory.username=${ARTIFACTORY_USR} " +
 						"-Dartifactory.password=${ARTIFACTORY_PSW} " +
