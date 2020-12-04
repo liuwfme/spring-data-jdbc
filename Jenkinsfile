@@ -97,7 +97,7 @@ pipeline {
 		stage('Release to artifactory') {
 			when {
 				anyOf {
-					branch 'master'
+					branch 'issue/rootless-docker'
 					not { triggeredBy 'UpstreamCause' }
 				}
 			}
@@ -105,7 +105,7 @@ pipeline {
 				docker {
 					image 'adoptopenjdk/openjdk8:latest'
 					label 'data'
-					args '-u root -v /var/run/docker.sock:/var/run/docker.sock  -v $HOME:/tmp/jenkins-home'
+					args '-u root -v $HOME:/tmp/jenkins-home'
 				}
 			}
 			options { timeout(time: 20, unit: 'MINUTES') }
@@ -128,13 +128,13 @@ pipeline {
 
 		stage('Publish documentation') {
 			when {
-				branch 'master'
+				branch 'issue/rootless-docker'
 			}
 			agent {
 				docker {
 					image 'adoptopenjdk/openjdk8:latest'
 					label 'data'
-					args '-u root -v /var/run/docker.sock:/var/run/docker.sock  -v $HOME:/tmp/jenkins-home'
+					args '-u root -v $HOME:/tmp/jenkins-home'
 				}
 			}
 			options { timeout(time: 20, unit: 'MINUTES') }
