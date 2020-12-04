@@ -43,7 +43,7 @@ pipeline {
 		stage("Test other configurations") {
 			when {
 				allOf {
-					branch 'master'
+					branch 'issue/rootless-docker'
 					not { triggeredBy 'UpstreamCause' }
 				}
 			}
