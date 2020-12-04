@@ -7,9 +7,6 @@
 		</encoder>
 	</appender>
 
-	<logger name="org.testcontainers" level="DEBUG"/>
-	<logger name="com.github.dockerjava" level="DEBUG"/>
-
 	<!--<logger name="org.springframework.jdbc.core" level="trace" />-->
 	<!--<logger name="org.springframework.data.jdbc.mybatis.DummyEntityMapper" level="trace" />-->
 
