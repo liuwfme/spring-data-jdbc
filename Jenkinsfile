@@ -63,7 +63,7 @@ pipeline {
 							docker.withRegistry('', 'hub.docker.com-springbuildmaster') {
 								docker.image('adoptopenjdk/openjdk11:latest').inside('-u root -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker -v $HOME:/tmp/jenkins-home') {
 									sh "docker login --username ${DOCKER_HUB_USR} --password ${DOCKER_HUB_PSW}"
-									sh "PROFILE=ci,java11,all-dbs ./test.sh"
+									sh "PROFILE=ci,java11 ./test.sh"
 								}
 							}
 						}
@@ -85,7 +85,7 @@ pipeline {
 							docker.withRegistry('', 'hub.docker.com-springbuildmaster') {
 								docker.image('adoptopenjdk/openjdk15:latest').inside('-u root -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker -v $HOME:/tmp/jenkins-home') {
 									sh "docker login --username ${DOCKER_HUB_USR} --password ${DOCKER_HUB_PSW}"
-									sh "PROFILE=ci,java11,all-dbs ./test.sh"
+									sh "PROFILE=ci,java11 ./test.sh"
 								}
 							}
 						}
